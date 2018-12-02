@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+
+    <link rel = "stylesheet" href = "css/circle.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <style type="text/css">
+      *{
+        font-family: 'Montserrat', sans-serif;
+      }
+      #page1{
+        background:#418D68; width: 100%; height: 100vh; text-align: center;
+/*        -webkit-animation-name: example;
+        -webkit-animation-duration: 4s;
+          -webkit-animation-iteration-count: infinite;
+          animation-name: example;
+          animation-duration: 20s;
+          animation-iteration-count: infinite;
+      }
+
+      @-webkit-keyframes example {
+          0%   {background-color:#d32f2f;}
+          20%  {background-color:#f6350a;}
+          40%  {background-color:#388e3c;}
+          60%  {background-color:#1197a5;}
+          80% {background-color:#ad47bc;}
+          100%   {background-color:#d32f2f;}
+      }
+
+      @keyframes example {
+          0%   {background-color:#d32f2f;}
+          20%  {background-color:#f6350a;}
+          40%  {background-color:#388e3c;}
+          60%  {background-color:#1197a5;}
+          80% {background-color:#ad47bc;}
+          100%   {background-color:#d32f2f;}*/
+      }
+    </style>
+
+    <title>Abled</title>
+  </head>
+  <body id='page1' style="border: 1px solid #418D68;">
+    <div class='container'>
+      <h1 class="center-align" style="padding-bottom: 50px; margin-bottom: 0px; margin-top: 100px; color: white;">{{result[0]}}</h1>
+      <div class="row">
+        <div class="center-align col s6" style="margin-top: 0px;">
+          <h3 style="color: white;">Blind Score</h3>
+          <h1 class="center-align" style="padding: 0px; margin: 0px; color: white; font-size: 160px;">{{result[1]}}</h1>
+          <h4 style="color: white;">out of 10</h4>
+        </div>
+        <div class="center-align col s6" style="margin-top: 0px;">
+          <h3 style="color: white;">Handicap Score</h3>
+          <h1 class="center-align" style="padding: 0px; margin: 0px; color: white; font-size: 160px;">{{result[2]}}</h1>
+          <h4 style="color: white;">out of 10</h4>
+        </div>
+      </div>
+      {% for value in result[3] %}
+         
+            <div class="container center-align" style="background: white; width: 100%; border-radius: 20px;">
+              <h4 style="padding: 10px 30px;">{{value}}</h4>
+              
+            </div>
+            
+      {% endfor %}
+      <form id='form' action = "https://a55b9c41.ngrok.io/addReview" method = "POST" style="margin: 50px 0px">
+        <div class="input-field col s12">
+        <textarea id='textarea1' class="materialize-textarea" style="width:100%; font-size: 28px; padding: 5px 10px; color:white;" name='review'></textarea>
+        <label for="textarea1">Your comments</label>
+        <input type="hidden" name="place" value={{result[0]}}>
+        <button style="background: #418D68; border: 2px solid white; padding: 10px 40px; color:  white; font-size: 24px; margin-top: 20px; border-radius: 10px;" type="submit">GO</button>
+      </div>
+      </form>
+    </div>
+  </body>
+</html>
